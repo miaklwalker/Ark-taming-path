@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <canvas id="data-vis"></canvas>
+    <div class="container">
+        <aside class="route">
+            <h2> ROUTE </h2>
+
+        </aside>
+
+        <div class="input-container form">
+            <label for="">
+                Level
+                <input id="level" placeholder="0" type="number">
+            </label>
+            <label for="">
+                lat
+                <input id="lat" placeholder="0" type="number">
+            </label>
+            <label for="">
+                lon
+                <input id="lon" placeholder="0"  type="number">
+            </label>
+            <div class="button-container">
+                <button id="add-creature">Add Stop</button>
+                <button id="clear-all">Clear All</button>
+            </div>
+        </div>
+
+        <canvas class="map" id="data-vis"></canvas>
+
+    </div>
+
     <script src="./main.js" type="module"></script>
 </body>
 </html>
