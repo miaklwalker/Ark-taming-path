@@ -16,7 +16,7 @@ const size = 10;
 drawGrid(size,canvas,ctx);
 
 
-const player = new Player(new Victor(0,0),0);
+const player = new Player(new Victor(0,0),1);
 
 const testList = [
     new Stop(150,83,13),
@@ -38,9 +38,4 @@ const testList = [
 let list = createtamingplan(testList,player);
 list.unshift(new Stop(0,player.currentPosition.x,player.currentPosition.y))
 list.forEach((spot,index,arr) => plotPoint(canvas,ctx)(spot,size,index,arr));
-
-console.log(list);
-
-
-// we need too find the clostest stop while considering the level using the player's levelDistanceWeight artificially decrease the distance
-// for instance if we have two stops equal distance but one is at level 150 and the other at level 140, we want to choose the one at level 150 first
+console.log(list)

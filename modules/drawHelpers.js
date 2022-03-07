@@ -24,8 +24,10 @@ export function plotPoint (canvas,ctx){
         const makeColor = (color) => 255 / arr.length * (color + 1);
         let newX = normalizeW(spot.position.x);
         let newY = normalizeH(spot.position.y);
+        ctx.beginPath();
         ctx.fillStyle = `rgb(${makeColor(color)},0,0)`;
-        ctx.fillRect(newX,newY, size, size);
+        ctx.ellipse(newX,newY,5,5, Math.PI / 4, 0, 2 * Math.PI);
+        ctx.fill();
         if(color > 0){
         connectPoints(spot, arr[color-1]);
         }
