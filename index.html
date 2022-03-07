@@ -10,34 +10,34 @@
 </head>
 <body>
     <div class="container">
-        <aside class="route">
+        <div class="map">
+            <canvas class="map" id="data-vis"></canvas>
+        </div>
+        <div class="route">
             <h2> ROUTE </h2>
-
-        </aside>
-
-        <div class="input-container form">
-            <label for="">
-                Level
-                <input id="level" placeholder="0" type="number">
-            </label>
-            <label for="">
-                lat
-                <input id="lat" placeholder="0" type="number">
-            </label>
-            <label for="">
-                lon
-                <input id="lon" placeholder="0"  type="number">
-            </label>
+            <div class="route-planner"></div>
+        </div>
+        <div class="form">
+            <div class="input-container">
+                <label for="">
+                    Level
+                    <input id="level" placeholder="0" type="number">
+                </label>
+                <label for="">
+                    lat
+                    <input id="lat" placeholder="0" type="number">
+                </label>
+                <label for="">
+                    lon
+                    <input id="lon" placeholder="0"  type="number">
+                </label>
+            </div>
             <div class="button-container">
                 <button id="add-creature">Add Stop</button>
                 <button id="clear-all">Clear All</button>
             </div>
         </div>
-
-        <canvas class="map" id="data-vis"></canvas>
-
-    </div>
-
+      </div>
     <script src="./main.js" type="module"></script>
 </body>
 </html>

@@ -3,114 +3,111 @@
   padding: 0;
 }
 
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-content: center center;
+  width: 100vw;
+  height: 100vh;
+}
+
 .container {
   display: -ms-grid;
   display: grid;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  -ms-grid-columns: 1fr 480px;
-      grid-template-columns: 1fr 480px;
-  -ms-grid-rows: 1fr 480px;
-      grid-template-rows: 1fr 480px;
+  -ms-grid-columns: 0.3fr 1fr 480px 0.3fr;
+      grid-template-columns: 0.3fr 1fr 480px 0.3fr;
+  -ms-grid-rows: 0.3fr 1fr 480px 0.3fr;
+      grid-template-rows: 0.3fr 1fr 480px 0.3fr;
+  max-height: 100vh;
   gap: 0px 0px;
-      grid-template-areas: "Route Form" "Route map" "Route map";
+  grid-auto-flow: row;
+      grid-template-areas: ". . . ." ". route form ." ". route map ." ". . . .";
+  gap: 2%;
 }
 
 .container .route {
-  border: black solid 3px;
-  padding-top: 5%;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
-  -ms-grid-column: 1;
-  grid-area: Route;
-  text-align: center;
-}
-
-.container .route h2 {
-  margin: 5%;
-  text-decoration: underline;
-}
-
-.container .route div.stop {
-  border-top: 1px black solid;
-  border-bottom: 1px solid black;
-  padding: 3% 0;
-}
-
-.container .route div.stop h4 {
-  font-size: 36px;
-}
-
-.container .route div.stop div {
-  text-align: center;
-  padding-left: 5%;
-}
-
-.container .route div.stop div span.label {
-  text-transform: uppercase;
-  font-family: sans-serif;
-}
-
-.container .form {
-  border: black solid 3px;
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: Form;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  place-content: center center;
-  place-items: center center;
-}
-
-.container .form label {
-  font-family: sans-serif;
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: 2.4px;
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.container .form input {
-  height: 30%;
-  width: 40%;
-  display: block;
-  text-align: center;
-  font-size: 18px;
-}
-
-.container .form button {
-  background-color: lightblue;
-  outline: none;
-  border: none;
-  padding: 2% 5%;
-  margin: 5%;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.container .map {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
-  grid-area: map;
-  border: black solid 3px;
+  grid-area: route;
+  border: 1px solid black;
+  width: 15vmax;
+  display: block;
+  overflow-y: scroll;
+}
+
+.container .route h2 {
+  text-align: center;
+  margin: 2% 0;
+  font-family: sans-serif;
+  border-bottom: 1px solid black;
+}
+
+.container .route .route-planner {
+  overflow-y: hidden;
+}
+
+.container .route .route-planner div.stop {
+  margin: 5% 0;
+  padding: 0 2%;
+  border-bottom: 1px dashed black;
+  border-top: 1px dashed black;
+}
+
+.container .route .route-planner :first-child {
+  margin-top: 0 !important;
+  border-top: none !important;
+}
+
+.container .form {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: form;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20%;
+}
+
+.container .form .input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.container .form .input-container label {
+  width: 30%;
+}
+
+.container .form .input-container label input {
   width: 100%;
-  height: 100%;
+}
+
+.container .form .button-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.container .form .button-container button {
+  width: 45%;
+}
+
+.map {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: map;
 }
 /*# sourceMappingURL=style.css.map */

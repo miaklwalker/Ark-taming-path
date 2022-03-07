@@ -20,12 +20,13 @@ export function plotPoint (canvas,ctx){
         ctx.lineTo(newX, newY);
         ctx.stroke();
     }
-    return function plotPoint(spot, size , color , arr) {
+    return function plotPoint(spot, color , arr) {
         const makeColor = (color) => 255 / arr.length * (color + 1);
         let newX = normalizeW(spot.position.x);
         let newY = normalizeH(spot.position.y);
         ctx.beginPath();
-        ctx.fillStyle = `rgb(${makeColor(color)},0,0)`;
+        let colour = spot.color || `rgb(${makeColor(color)},0,0)`;
+        ctx.fillStyle = colour;
         ctx.ellipse(newX,newY,5,5, Math.PI / 4, 0, 2 * Math.PI);
         ctx.fill();
         if(color > 0){

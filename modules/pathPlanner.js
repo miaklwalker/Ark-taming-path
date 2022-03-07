@@ -1,7 +1,7 @@
 import Victor from "./Victor.js";
 
 function findWeightedDistance(stop,playerPosition,player) {
-    return playerPosition.distance(stop.position) + (150 - stop.level * player.levelDistanceWeight) ;
+    return playerPosition.distance(stop.position) + (150 - stop.level * player.levelDistanceWeight/50) ;
 }
 
 function wrapper (playerPosition,player) {
