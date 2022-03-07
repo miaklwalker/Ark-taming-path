@@ -5,18 +5,19 @@
 body{
   display: flex;
   place-content: center center;
+  place-items: center center;
   width: 100vw;
   height:100vh;
-
+  overflow: hidden;
 }
 
 
 .container {  
   display: grid;
-  grid-template-columns: 0.3fr 1fr 480px 0.3fr;
-  grid-template-rows:    0.3fr 1fr 480px 0.3fr;
-  max-height:100vh;
-  //max-width: 1280px;
+  grid-template-columns: 0.1fr 1fr 360px 0.1fr;
+  grid-template-rows:    0.1fr 1fr 360px 0.1fr;
+  max-height:95vh;
+
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
@@ -59,6 +60,7 @@ body{
     .input-container{
       display: flex;
       justify-content: space-evenly;
+      margin-bottom:5%;
       label{
         width: 30%;
         input{
@@ -72,14 +74,25 @@ body{
       justify-content: space-evenly;
       button{
         width: 45%;
-
+        padding:2% 0;
+        outline:none;
+        border:none;
+        border-radius: 7px;
+        background-color: rgb(22, 136, 54);
+        &.danger{
+          background-color: rgb(181, 43, 43);
+        }
       }
     }
   }
 
 }
 
-.map { grid-area: map; }
+.map { 
+  grid-area: map; 
+  width:100%;
+  height:auto;
+}
 
 
 

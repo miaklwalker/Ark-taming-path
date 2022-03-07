@@ -8,18 +8,20 @@ body {
   display: -ms-flexbox;
   display: flex;
   place-content: center center;
+  place-items: center center;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.3fr 1fr 480px 0.3fr;
-      grid-template-columns: 0.3fr 1fr 480px 0.3fr;
-  -ms-grid-rows: 0.3fr 1fr 480px 0.3fr;
-      grid-template-rows: 0.3fr 1fr 480px 0.3fr;
-  max-height: 100vh;
+  -ms-grid-columns: 0.1fr 1fr 360px 0.1fr;
+      grid-template-columns: 0.1fr 1fr 360px 0.1fr;
+  -ms-grid-rows: 0.1fr 1fr 360px 0.1fr;
+      grid-template-rows: 0.1fr 1fr 360px 0.1fr;
+  max-height: 95vh;
   gap: 0px 0px;
   grid-auto-flow: row;
       grid-template-areas: ". . . ." ". route form ." ". route map ." ". . . .";
@@ -81,6 +83,7 @@ body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  margin-bottom: 5%;
 }
 
 .container .form .input-container label {
@@ -103,11 +106,22 @@ body {
 
 .container .form .button-container button {
   width: 45%;
+  padding: 2% 0;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  background-color: #168836;
+}
+
+.container .form .button-container button.danger {
+  background-color: #b52b2b;
 }
 
 .map {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: map;
+  width: 100%;
+  height: auto;
 }
 /*# sourceMappingURL=style.css.map */
