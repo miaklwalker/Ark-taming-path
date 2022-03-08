@@ -1,0 +1,101 @@
+{
+    "the island": {
+        "url": "./images/The_Island_Topographic_Map.webp",
+        "offsets": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+        }
+    },
+    "scorched earth": {
+        "url": "./images/Scorched_Earth_Map.webp",
+        "offsets": {
+            "x": 12,
+            "y": 17,
+            "w": -9,
+            "h": -23
+        }
+    },
+    "aberation": {
+        "url": "./images/Aberration_Map.webp",
+        "offsets": {
+            "x": 22,
+            "y": 33,
+            "w": -7,
+            "h": -49
+        }
+    },
+    "extinction": {
+        "url": "./images/Extinction_Map.webp",
+        "offsets": {
+            "x": 12,
+            "y": 17,
+            "w": -2,
+            "h": -25
+        }
+    },
+    "genesis 1": {
+        "url": "./images/Genesis_Part_1_Map.webp",
+        "offsets": {
+            "x": 14,
+            "y": 26,
+            "w": 5,
+            "h": -39
+        }
+    },
+    "genesis 2": {
+        "url": "./images/Genesis_Part_2_Map.webp",
+        "offsets": {
+            "x": 14,
+            "y": 26,
+            "w": 5,
+            "h": -39
+        }
+    },
+    "crystal isle": {
+        "url": "./images/Crystal_Isles_Topographic_Map.webp",
+        "offsets": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+        }
+    },
+    "lost island": {
+        "url": "./images/Lost_Island_map.webp",
+        "offsets": {
+            "x": 14,
+            "y": 26,
+            "w": 5,
+            "h": -39
+        }
+    },
+    "ragnorak": {
+        "url": "./images/Ragnarok_Map.webp",
+        "offsets": {
+            "x": 14,
+            "y": 22,
+            "w": -5,
+            "h": -33
+        }
+    },
+    "the center": {
+        "url": "./images/The_Center_Topographic_Map.webp",
+        "offsets": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+        }
+    },
+    "valquero": {
+        "url": "./images/Valguero_Topographic_Map.webp",
+        "offsets": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0
+        }
+    }
+}

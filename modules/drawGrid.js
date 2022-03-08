@@ -1,4 +1,5 @@
-export default function drawGrid(size,canvas,ctx) {
+export default function drawGrid(canvas,ctx) {
+    let size = 10;
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
     for (let i = 0; i <= canvas.width; i += canvas.width / size) {
