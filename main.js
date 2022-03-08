@@ -97,6 +97,9 @@ initGui();
 const generateRouteStop = ({level,position:{x:lon, y:lat}}) => {
     const stop = document.createElement("div");
     stop.classList.add("stop");
+    stop.addEventListener("click",()=>{
+        stop.classList.toggle("visited")
+    })
     stop.innerHTML = `
     <h4 class="level"> lvl : ${level}</h4>
     <div><span class="label">lat</span> : <span> ${lat}</span></div>

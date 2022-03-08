@@ -30,8 +30,11 @@ body{
     grid-area: route; 
     border: 1px solid black;
     width: 15vmax;
+    min-height: 100%;
     display: block;  
     overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-face-color: black;
     h2{
       text-align: center;
       margin:2% 0;
@@ -39,8 +42,11 @@ body{
       border-bottom:1px solid black;
     }
     .route-planner{
-      overflow-y:hidden;
+      //overflow-y:hidden;
       div.stop{
+        &.visited{
+          background-color: rgb(22, 136, 54);
+        }
         margin:5% 0;
         padding: 0 2%;
         border-bottom: 1px dashed black;

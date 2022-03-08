@@ -35,8 +35,11 @@ body {
   grid-area: route;
   border: 1px solid black;
   width: 15vmax;
+  min-height: 100%;
   display: block;
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-face-color: black;
 }
 
 .container .route h2 {
@@ -46,15 +49,15 @@ body {
   border-bottom: 1px solid black;
 }
 
-.container .route .route-planner {
-  overflow-y: hidden;
-}
-
 .container .route .route-planner div.stop {
   margin: 5% 0;
   padding: 0 2%;
   border-bottom: 1px dashed black;
   border-top: 1px dashed black;
+}
+
+.container .route .route-planner div.stop.visited {
+  background-color: #168836;
 }
 
 .container .route .route-planner :first-child {
