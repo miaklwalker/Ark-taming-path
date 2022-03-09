@@ -23,6 +23,9 @@ export function plotPoint (canvas,ctx,{spot, color , arr}){
     let newY = normalizeH(spot.position.y);
     ctx.beginPath();
     let colour = spot.color || `rgb(${makeColor(color)},0,0)`;
+    if(spot.visited) {
+        colour = "rgb(22, 136, 54)";
+    }
     ctx.fillStyle = colour;
     ctx.ellipse(newX,newY,5,5, Math.PI / 4, 0, 2 * Math.PI);
     ctx.fill();
