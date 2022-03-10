@@ -1,10 +1,8 @@
 import normalize from "./normalizeToRange.js";
 /**
  * @name plotPoint
- * @param {Spot} spot
- * @param {number} size
  */
-export function plotPoint (canvas,ctx){
+export function plotPoint (canvas,ctx,{spot, color , arr}){
 
     const normalizeW = (val) => normalize(val,0,100,0,canvas.width);
     const normalizeH = (val) => normalize(val,0,100,0,canvas.height);
@@ -20,17 +18,19 @@ export function plotPoint (canvas,ctx){
         ctx.lineTo(newX, newY);
         ctx.stroke();
     }
-    return function plotPoint(spot, color , arr) {
-        const makeColor = (color) => 255 / arr.length * (color + 1);
-        let newX = normalizeW(spot.position.x);
-        let newY = normalizeH(spot.position.y);
-        ctx.beginPath();
-        let colour = spot.color || `rgb(${makeColor(color)},0,0)`;
-        ctx.fillStyle = colour;
-        ctx.ellipse(newX,newY,5,5, Math.PI / 4, 0, 2 * Math.PI);
-        ctx.fill();
-        if(color > 0){
-        connectPoints(spot, arr[color-1]);
-        }
+    const makeColor = (color) => 255 / arr.length * (color + 1);
+    let newX = normalizeW(spot.position.x);
+    let newY = normalizeH(spot.position.y);
+    ctx.beginPath();
+    let colour = spot.color || `rgb(${makeColor(color)},0,0)`;
+    if(spot.visited) {
+        colour = "rgb(22, 136, 54)";
     }
+    ctx.fillStyle = colour;
+    ctx.ellipse(newX,newY,5,5, Math.PI / 4, 0, 2 * Math.PI);
+    ctx.fill();
+    if(color > 0){
+    connectPoints(spot, arr[color-1]);
+    }
+
 }
