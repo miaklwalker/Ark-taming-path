@@ -12,7 +12,7 @@ import mapLayer from "./modules/mapLayer.js";
 import callbackLayer from "./modules/callbackLayer.js";
 import generateRouteStop from "./modules/generateRouteStop.js";
 import FormController from "./modules/formController.js";
-
+import initGui from "./modules/initGui.js";
 
 const canvas = document.getElementById("data-vis");
 const ctx = canvas.getContext("2d");
@@ -35,7 +35,9 @@ const canvasCon = new canvasController(canvas,ctx);
     canvasCon.addLayer(new mapLayer(1,{arkData,player}));
     canvasCon.addLayer(new callbackLayer(0,"clear",(canvas,context)=>{context.clearRect(0,0,canvas.width,canvas.height)}));
     canvasCon.addLayer(new callbackLayer(2,"grid",(canvas,context)=>{drawGrid(canvas,context)}));
+
 const formController = new FormController(lat_input,lon_input);
+
 function startup () {
    let promises = [];
     names.forEach(name => {
@@ -43,7 +45,9 @@ function startup () {
     });
     if (sessionStorage.getItem("stops")) {
         masterList = new stopList();
-        masterList.stops = JSON.parse(sessionStorage.getItem("stops")).map(stop => new Stop(stop.level,stop.position.x,stop.position.y,stop.color,stop.visited));
+        masterList.stops = JSON
+        .parse(sessionStorage.getItem("stops"))
+        .map(stop => new Stop(stop.level,stop.position.x,stop.position.y,stop.color,stop.visited));
     } else {
         masterList = new stopList();
     }
@@ -62,41 +66,7 @@ Promise.all(startup())
     makeHTMLfromList();
 })
 
-
-
-
-
-
-function initGui(){
-    gui = new dat.GUI({
-        name:"GUI"
-    })
-    let controls = gui.addFolder("player position")
-        //controls.open();
-        controls.add(player.currentPosition,"x",0,100,.01)
-            .setValue(player.currentPosition.x)
-            .onChange((e)=>player.currentPosition.x = e)
-            .onFinishChange(makeHTMLfromList);
-
-        controls.add(player.currentPosition,"y",0,100,.01)
-        .setValue(player.currentPosition.y)
-        .onChange((e)=>player.currentPosition.y = e)
-        .onFinishChange(makeHTMLfromList);
-
-        controls.add(player,"map",names)
-        .onChange(async(e)=>{
-            player.map = e;
-            canvasCon.draw()
-            makeHTMLfromList()
-        })
-    let config = gui.addFolder("preferences");
-        //config.open()
-        config.add(player,"levelDistanceWeight",0,10,1)
-        .setValue(player.levelDistanceWeight)
-        .onChange((e)=>player.levelDistanceWeight = e)
-        .onFinishChange(makeHTMLfromList);
-}
-initGui();
+initGui(player,makeHTMLfromList,canvasCon,names);
 
 
 function saveToSessionStorage () {
@@ -105,8 +75,9 @@ function saveToSessionStorage () {
 async function makeHTMLfromList (){
     let list = createtamingplan(masterList.stops.slice(0),player);
     routebox.innerHTML = "";
-    list.forEach(stop => routebox.appendChild(generateRouteStop(stop)));
+    list.forEach(stop => routebox.appendChild(generateRouteStop(stop,saveToSessionStorage,canvasCon.draw)));
     list.unshift(new Stop(0,player.currentPosition.y,player.currentPosition.x,"rgb(0,0,255)"))
+    masterList.listToDraw = list;
     canvasCon.draw();
 }
 function deleteSessionStorage () {
