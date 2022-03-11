@@ -22,6 +22,6 @@ export default class canvasController {
     }
     draw = () =>{
         this.layers.sort((a,b) => a.priority - b.priority);
-        this.layers.forEach(async (l) => await l.draw(this.canvas,this.context));
+        this.layers.forEach((l) => l.draw(this.canvas,this.context));
     }
 }

@@ -72,7 +72,7 @@ initGui(player,makeHTMLfromList,canvasCon,names);
 function saveToSessionStorage () {
     sessionStorage.setItem("stops",JSON.stringify(masterList.stops));
 }
-async function makeHTMLfromList (){
+function makeHTMLfromList (){
     let list = createtamingplan(masterList.stops.slice(0),player);
     routebox.innerHTML = "";
     list.forEach(stop => routebox.appendChild(generateRouteStop(stop,saveToSessionStorage,canvasCon.draw)));
@@ -85,6 +85,7 @@ function deleteSessionStorage () {
     if (userConfirm) {
         masterList = new stopList();
         sessionStorage.clear();
+        canvasCon.draw();
         makeHTMLfromList();
     }
 }
