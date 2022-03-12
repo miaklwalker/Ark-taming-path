@@ -43,14 +43,7 @@ function startup () {
     names.forEach(name => {
         promises.push(loadImage(arkData[name].url));
     });
-    if (sessionStorage.getItem("stops")) {
-        masterList = new stopList();
-        masterList.stops = JSON
-        .parse(sessionStorage.getItem("stops"))
-        .map(stop => new Stop(stop.level,stop.position.x,stop.position.y,stop.color,stop.visited));
-    } else {
-        masterList = new stopList();
-    }
+    masterList = loadSessionStorage();
     return promises;
 }
 
@@ -61,13 +54,25 @@ Promise.all(startup())
     })
 })
 .then(()=>{
-    canvasCon.addLayer(new callbackLayer("3",{player},masterList.draw))
+    canvasCon.addLayer(new callbackLayer("3",{player},(...args)=>masterList.draw(...args)))
     canvasCon.draw();
     makeHTMLfromList();
 })
 
 initGui(player,makeHTMLfromList,canvasCon,names);
 
+function loadSessionStorage () {
+    let temp;
+    if (sessionStorage.getItem("stops")) {
+        temp = new stopList();
+        temp.stops = JSON
+            .parse(sessionStorage.getItem("stops"))
+            .map(stop => new Stop(stop.level,stop.position.x,stop.position.y,stop.color,stop.visited));
+    } else {
+        temp = new stopList();
+    }
+    return temp;
+}
 
 function saveToSessionStorage () {
     sessionStorage.setItem("stops",JSON.stringify(masterList.stops));

@@ -1,12 +1,14 @@
 
-const generateRouteStop = (stop,persistance,render) => {
+const generateRouteStop = (stop,persistence,render) => {
     const {level,position:{x:lon, y:lat}} = stop;
     const ele = document.createElement("div");
     ele.classList.add("stop");
     ele.addEventListener("click",()=>{
         stop.visited = !stop.visited;
         ele.classList.toggle("visited")
-        if(persistance) persistance();
+        //! Session Storage Handler
+        if(persistence) persistence();
+        //! Render Handler;
         if(render) render();        
     })
     if(stop.visited) {
@@ -41,20 +43,18 @@ const generateRouteStop = (stop,persistance,render) => {
             const removeZeroRegex = new RegExp("^0+(?!$)",'g');
             value = value.replaceAll(removeZeroRegex,"");
             e.target.innerText = value;
-            console.log(value);
             e.target.removeAttribute("contenteditable");
+            render();
         }
-    })
-    let latSpan = ele.querySelector(".lat-container");
-        latSpan.addEventListener("input",spanHandler);
-        latSpan.addEventListener("click",makeEditable)
-    let lonSpan = ele.querySelector(".lon-container");
-        lonSpan.addEventListener("input",spanHandler);
-        lonSpan.addEventListener("click",makeEditable)
+    });
 
-    let levelSpan = ele.querySelector(".level-container");
-        levelSpan.addEventListener("input",spanHandler);
-        levelSpan.addEventListener("click",makeEditable)
+    [".lat-container",".lon-container",".level-container"].forEach(span=>{
+        let temp = ele.querySelector(span);
+        temp.addEventListener("input",spanHandler);
+        temp.addEventListener("click",makeEditable)
+    })
+
+
 
 
 
