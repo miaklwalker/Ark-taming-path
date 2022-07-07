@@ -25,6 +25,23 @@ const clear_button = document.getElementById("clear-all");
 const player = new Player(new Victor(50,50),0,"valquero");
 const size = 10;
 
+
+let storedConsent  = localStorage.getItem("consent");
+let consent;
+if(storedConsent === null){
+    let string = ""
+    string += "In order to remember your preferences and make your experience better "
+    string += "I use both local and session storage I do not track you or your usage in anyway,"
+    string += " if you still would prefer that this site didn't remember things for you, hit cancel."
+    consent = confirm(string)
+    if(consent){
+    localStorage.setItem("consent",consent)
+    storedConsent = consent
+    }
+}
+
+
+async function main () {
 const arkData = await loadJSON("arkData.json");
 let names = Object.keys(arkData);
 let masterList,gui;
@@ -103,4 +120,8 @@ lat_input.addEventListener("change", formController.updateForm("lat"));
 lon_input.addEventListener("change", formController.updateForm("lon"));
 level_input.addEventListener("change", formController.updateForm("level"));
 
+}
 
+if(storedConsent) {
+    main();
+}

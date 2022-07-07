@@ -3,72 +3,65 @@
   padding: 0;
 }
 
-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  place-content: center center;
-  place-items: center center;
-  width: 100vw;
-  height: 100vh;
+:root {
+  --green:rgb(22, 136, 54);
+  --red:rgb(181, 43, 43);
+}
+
+html {
   overflow: hidden;
 }
 
 .container {
+  width: 100vw;
+  height: 100vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 0.1fr 1fr 360px 0.1fr;
-      grid-template-columns: 0.1fr 1fr 360px 0.1fr;
-  -ms-grid-rows: 0.1fr 1fr 360px 0.1fr;
-      grid-template-rows: 0.1fr 1fr 360px 0.1fr;
-  max-height: 95vh;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-      grid-template-areas: ". . . ." ". route form ." ". route map ." ". . . .";
-  gap: 2%;
+  -ms-grid-columns: .5fr 1.5fr;
+      grid-template-columns: .5fr 1.5fr;
+  -ms-grid-rows: .5fr 1.5fr;
+      grid-template-rows: .5fr 1.5fr;
+      grid-template-areas: "route form" "route map";
+  -webkit-column-gap: 10%;
+          column-gap: 10%;
 }
 
 .container .route {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
+  -ms-grid-column: 1;
   grid-area: route;
-  border: 1px solid black;
-  width: 15vmax;
-  min-height: 100%;
-  display: block;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-face-color: black;
+  text-align: center;
 }
 
 .container .route h2 {
-  text-align: center;
-  margin: 2% 0;
-  font-family: sans-serif;
-  border-bottom: 1px solid black;
+  margin-top: 5%;
+  padding-bottom: 5%;
+  border-bottom: 3px black solid;
 }
 
-.container .route .route-planner div.stop {
-  margin: 5% 0;
-  padding: 0 2%;
-  border-bottom: 1px dashed black;
-  border-top: 1px dashed black;
+.container .route div.route-planner {
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 87%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 3%;
+  padding-bottom: 4%;
+  row-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.container .route .route-planner div.stop.visited {
-  background-color: #168836;
-}
-
-.container .route .route-planner :first-child {
-  margin-top: 0 !important;
-  border-top: none !important;
-}
-
-.container .form {
-  -ms-grid-row: 2;
-  -ms-grid-column: 3;
-  grid-area: form;
+.container .route div.route-planner div.stop {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,55 +69,93 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 20%;
-}
-
-.container .form .input-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  margin-bottom: 5%;
-}
-
-.container .form .input-container label {
-  width: 30%;
-}
-
-.container .form .input-container label input {
-  width: 100%;
-}
-
-.container .form .button-container {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-
-.container .form .button-container button {
-  width: 45%;
-  padding: 2% 0;
-  outline: none;
-  border: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #e2e2e2;
+  -webkit-box-shadow: 2px 2px #c8c8c8;
+          box-shadow: 2px 2px #c8c8c8;
+  width: 70%;
+  text-align: left;
   border-radius: 7px;
-  background-color: #168836;
+  min-height: 80px;
 }
 
-.container .form .button-container button.danger {
-  background-color: #b52b2b;
+.container .route div.route-planner div.stop.visited {
+  background-color: var(--green);
+  -webkit-box-shadow: 2px 2px #e2e2e2;
+          box-shadow: 2px 2px #e2e2e2;
 }
 
-.map {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
-  grid-area: map;
+.container .route div.route-planner div.stop h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+}
+
+.container .route div.route-planner div.stop div {
+  padding-left: 15%;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.container .form {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: form;
   width: 100%;
-  height: auto;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-content: center center;
+  place-items: center center;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas: "level lat lon . . " "submit danger . . . ";
+}
+
+.container .form label#level-label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: level;
+}
+
+.container .form label#lat-label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: lat;
+}
+
+.container .form label#lon-label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: lon;
+}
+
+.container .form button#add-creature {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: submit;
+}
+
+.container .form button#clear-all {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: danger;
+}
+
+.container .map {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: map;
+}
+
+.container .map canvas {
+  height: 95%;
+  width: auto;
 }
 /*# sourceMappingURL=style.css.map */

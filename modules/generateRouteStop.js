@@ -4,6 +4,7 @@ const generateRouteStop = (stop,persistence,render) => {
     const ele = document.createElement("div");
     ele.classList.add("stop");
     ele.addEventListener("click",()=>{
+        console.log("ran")
         stop.visited = !stop.visited;
         ele.classList.toggle("visited")
         //! Session Storage Handler
@@ -16,8 +17,8 @@ const generateRouteStop = (stop,persistence,render) => {
     }
     ele.innerHTML = `
     <h4 class="level"> lvl : <span  class="level-container" data-key="level">${level}</span></h4>
-    <div><span class="label">lat</span> : <span  class="lat-container" data-key="lat"> ${lat}</span></div>
-    <div><span class="label">lon</span> : <span  class="lon-container" data-key="lon"> ${lon}</span></div>
+    <div><span class="label">lat</span> : <span  class="lat-container box" data-key="lat"> ${lat}</span></div>
+    <div><span class="label">lon</span> : <span  class="lon-container box" data-key="lon"> ${lon}</span></div>
     `
     function spanHandler (e){
         if(e.inputType === "insertParagraph"){e.preventDefault()}

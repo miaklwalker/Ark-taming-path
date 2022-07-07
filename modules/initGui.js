@@ -1,9 +1,10 @@
 export default function initGui(player,makeHTMLfromList,canvasCon,names){
     let gui = new dat.GUI({
-        name:"GUI"
+        name:"GUI",
+        autoPlace:true,
     })
     let controls = gui.addFolder("player position")
-        controls.open();
+        //controls.open();
         controls.add(player.currentPosition,"y",0,100,.01)
             .name("latitude")
             .setValue(player.currentPosition.y)

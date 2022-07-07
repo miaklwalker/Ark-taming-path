@@ -1,103 +1,225 @@
+//*{
+//  margin:0;
+//  padding:0;
+//}
+//body{
+//  display: flex;
+//  place-content: center center;
+//  place-items: center center;
+//  width: 100vw;
+//  height:100vh;
+//  overflow: hidden;
+//}
+//
+//
+//.container {
+//  display: grid;
+//  grid-template-columns: 0.1fr 1fr 360px 0.1fr;
+//  grid-template-rows:    0.1fr 1fr 360px 0.1fr;
+//  max-height:95vh;
+//
+//  gap: 0px 0px;
+//  grid-auto-flow: row;
+//  grid-template-areas:
+//    ". . . ."
+//    ". route form ."
+//    ". route map ."
+//    ". . . .";
+//    gap:2%;
+//  .route {
+//    grid-area: route;
+//    border: 1px solid black;
+//    width: 15vmax;
+//    min-height: 100%;
+//    display: block;
+//    overflow-y: scroll;
+//    scrollbar-width: thin;
+//    scrollbar-face-color: black;
+//    h2{
+//      text-align: center;
+//      margin:2% 0;
+//      font-family: sans-serif;
+//      border-bottom:1px solid black;
+//    }
+//    .route-planner{
+//      //overflow-y:hidden;
+//      div.stop{
+//        &.visited{
+//          background-color: rgb(22, 136, 54);
+//        }
+//        margin:5% 0;
+//        padding: 0 2%;
+//        border-bottom: 1px dashed black;
+//        border-top:1px dashed black;
+//      }
+//      :first-child{
+//        margin-top: 0 !important;
+//        border-top: none !important;
+//      }
+//    }
+//  }
+//  .form {
+//    grid-area: form;
+//    display: flex;
+//    flex-direction: column;
+//    gap:20%;
+//    .input-container{
+//      display: flex;
+//      justify-content: space-evenly;
+//      margin-bottom:5%;
+//      label{
+//        width: 30%;
+//        input{
+//          width: 100%;
+//        }
+//      }
+//    }
+//    .button-container{
+//      width: 100%;
+//      display: flex;
+//      justify-content: space-evenly;
+//      button{
+//        width: 45%;
+//        padding:2% 0;
+//        outline:none;
+//        border:none;
+//        border-radius: 7px;
+//        background-color: rgb(22, 136, 54);
+//        &.danger{
+//          background-color: rgb(181, 43, 43);
+//        }
+//      }
+//    }
+//  }
+//
+//}
+//
+//.map {
+//  grid-area: map;
+//  width:100%;
+//  height:auto;
+//}
+
+
 *{
-  margin:0;
-  padding:0;
-}
-body{
-  display: flex;
-  place-content: center center;
-  place-items: center center;
-  width: 100vw;
-  height:100vh;
-  overflow: hidden;
+    margin:0;
+    padding:0;
 }
 
-
-.container {  
-  display: grid;
-  grid-template-columns: 0.1fr 1fr 360px 0.1fr;
-  grid-template-rows:    0.1fr 1fr 360px 0.1fr;
-  max-height:95vh;
-
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    ". . . ."
-    ". route form ."
-    ". route map ."
-    ". . . .";
-    gap:2%;
-  .route { 
-    grid-area: route; 
-    border: 1px solid black;
-    width: 15vmax;
-    min-height: 100%;
-    display: block;  
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-face-color: black;
-    h2{
-      text-align: center;
-      margin:2% 0;
-      font-family: sans-serif;
-      border-bottom:1px solid black;
-    }
-    .route-planner{
-      //overflow-y:hidden;
-      div.stop{
-        &.visited{
-          background-color: rgb(22, 136, 54);
-        }
-        margin:5% 0;
-        padding: 0 2%;
-        border-bottom: 1px dashed black;
-        border-top:1px dashed black;
-      }
-      :first-child{
-        margin-top: 0 !important;
-        border-top: none !important;
-      }
-    }
-  }
-  .form { 
-    grid-area: form; 
-    display: flex;
-    flex-direction: column;
-    gap:20%;
-    .input-container{
-      display: flex;
-      justify-content: space-evenly;
-      margin-bottom:5%;
-      label{
-        width: 30%;
-        input{
-          width: 100%;
-        }
-      }
-    }
-    .button-container{
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      button{
-        width: 45%;
-        padding:2% 0;
-        outline:none;
-        border:none;
-        border-radius: 7px;
-        background-color: rgb(22, 136, 54);
-        &.danger{
-          background-color: rgb(181, 43, 43);
-        }
-      }
-    }
-  }
-
+:root{
+    --green:rgb(22, 136, 54);
+    --red:rgb(181, 43, 43);
+}
+html{
+    overflow: hidden;
 }
 
-.map { 
-  grid-area: map; 
-  width:100%;
-  height:auto;
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: .5fr 1.5fr;
+    grid-template-rows: .5fr 1.5fr;
+    grid-template-areas: "route form" "route map";
+    column-gap: 10%;
+    .route{
+        grid-area: route;
+        text-align: center;
+        h2{
+            margin-top:5%;
+            padding-bottom:5%;
+            border-bottom: 3px black solid;
+        }
+        div.route-planner{
+            overflow-y: scroll;
+            display: flex;
+            max-height: 87%;
+            flex-direction: column;
+            padding-top:3%;
+            padding-bottom: 4%;
+            row-gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+            div.stop{
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: rgb(226, 226, 226);
+                box-shadow: 2px 2px rgb(200,200,200);
+                &.visited{
+                    background-color: var(--green);
+                    box-shadow: 2px 2px rgb(226,226,226);
+                }
+                //margin: 2% 0;
+                width: 70%;
+                text-align: left;
+                border-radius: 7px;
+                min-height:80px;
+                h4{
+                    font-family:Arial, Helvetica, sans-serif;
+                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 1.8px;
+                }
+                div{
+                    padding-left:15%;
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    font-family: monospace;
+                    span{
+                        &.label{}
+                        &.box{}
+                    }
+                }
+            }
+        }
+
+    }
+    .form{
+        grid-area:form;
+        width: 100%;
+        height:100%;
+        display: grid;
+        place-content: center center;
+        place-items: center center;
+        grid-template-columns: repeat(5,1fr);
+        grid-template-rows: repeat(2,1fr);
+        grid-template-areas: 
+        "level lat lon . . "
+        "submit danger . . . ";
+            label{
+                &#level-label{
+                    grid-area: level;
+                }
+                &#lat-label{
+                    grid-area: lat;
+                }
+                &#lon-label{
+                    grid-area: lon;
+                }
+                input{
+
+                }
+            }
+            button{
+            &#add-creature{
+                grid-area: submit;
+            }
+            &#clear-all{
+                grid-area: danger;
+            }
+            &.danger{
+            }
+        }
+        
+    }
+    .map{
+        grid-area:map;
+        canvas{
+            height:95%;
+            width: auto;
+        }
+    }
 }
 
 
